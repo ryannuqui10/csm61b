@@ -16,13 +16,11 @@ public class BinarySearchTree <T extends Comparable<T>> {
     private Node fromSortedArray(T[] values, int lower, int upper) {
         if (lower > upper) {
             return null;
-        } else if (lower == upper) {
-            return new Node(values[lower]);
         }
         int middle = lower + ((upper - lower) / 2); // middle index of the array
         Node mid = new Node();
         mid.value = values[middle];
-        mid.left = fromSortedArray(values, lower, middle);
+        mid.left = fromSortedArray(values, lower, middle - 1);
         mid.right = fromSortedArray(values, middle + 1, upper);
         return mid;
     }
