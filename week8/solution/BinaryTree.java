@@ -1,11 +1,6 @@
 public class BinaryTree<T> {
 
     protected Node root;
-    protected class Node {
-        public T value;
-        public Node left;
-        public Node right;
-    }
 
     /*
         Procedure that returns the height of a BinaryTree
@@ -13,6 +8,10 @@ public class BinaryTree<T> {
         @param node The node of a tree to calculate the height of
         @return height The height of the given tree
      */
+
+    public int height() {
+        return height(root);
+    }
 
     private int height(Node node) {
         if (node == null) {
@@ -27,6 +26,10 @@ public class BinaryTree<T> {
         @param node The node of a tree
         @return boolean Whether the tree is balanced or not
      */
+
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
 
     private boolean isBalanced(Node node) {
         if (node == null) {

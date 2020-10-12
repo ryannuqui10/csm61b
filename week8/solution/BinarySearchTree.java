@@ -1,11 +1,6 @@
 public class BinarySearchTree <T extends Comparable<T>> {
 
     protected Node root;
-    protected class Node {
-        public T value;
-        public Node right;
-        public Node left;
-    }
 
     /*
         Note: Passing in an int[] will not work in this case because we are working with generics
@@ -21,14 +16,15 @@ public class BinarySearchTree <T extends Comparable<T>> {
     private Node fromSortedArray(T[] values, int lower, int upper) {
         if (lower > upper) {
             return null;
+        } else if (lower == upper) {
+            return new Node(values[lower]);
         }
         int middle = lower + ((upper - lower) / 2); // middle index of the array
         Node mid = new Node();
         mid.value = values[middle];
-        mid.left = fromSortedArray(values, lower, upper);
+        mid.left = fromSortedArray(values, lower, middle);
         mid.right = fromSortedArray(values, middle + 1, upper);
         return mid;
-
     }
 
 }
